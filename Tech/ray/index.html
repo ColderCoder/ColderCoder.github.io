@@ -5,8 +5,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="HandheldFriendly" content="True">
-    <meta name="google-site-verification" content="kLDn9a7ZvPJt3MBwafuCwGPkzsd3SRnOKYyfJlXBAWQ" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
     <meta name="description" content="2020-11-21更新：由于许可证争议，XTLS已从v2ray-core中移除，本教程换用TLS.2021-1-1更新：建议使用xray-core.2021-1-28更新：换用xray2021-3-18更新：可选SNI分流（配置多证书，并在fallbacks指定”name”） 注：本文仅作一个手动搭建的简单示范，不推荐用于生产环境。且本文不积极更新，任何内容均可能过时。对于新手，推荐阅读：小小白">
 <meta property="og:type" content="article">
 <meta property="og:title" content="安装xray服务端  配置XTLS回落">
@@ -45,21 +44,19 @@
 
     <!-- persian styles -->
     
-      
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/coldercoder/coldercoder.github.io/css/rtl.css">
-
-    
     <!-- rss -->
     
     
+	<!-- mathjax -->
+	
 <meta name="generator" content="Hexo 5.4.0"></head>
 
 <body class="max-width mx-auto px3 ltr">
     
       <div id="header-post">
-  <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
-  <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
-  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <a id="menu-icon" href="#" aria-label="Menu"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#" aria-label="Menu"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" "Top" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
   <span id="menu">
     <span id="nav">
       <ul>
@@ -70,6 +67,8 @@
          
           <li><a href="/archives/">Archive</a></li>
          
+          <li><a href="/search/">Search</a></li>
+         
           <li><a href="/about/">About</a></li>
         
       </ul>
@@ -78,13 +77,13 @@
     <span id="actions">
       <ul>
         
-        <li><a class="icon" href="/Music/huanchao/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        <li><a class="icon" aria-label="Previous post " href="/Music/huanchao/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
         
         
-        <li><a class="icon" href="/Tech/how2use-xray/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        <li><a class="icon" aria-label="Next post " href="/Tech/how2use-xray/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
         
-        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
-        <li><a class="icon" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+        <li><a class="icon" aria-label="Back to top " href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" aria-label="Share post " href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
       </ul>
       <span id="i-prev" class="info" style="display:none;">Previous post</span>
       <span id="i-next" class="info" style="display:none;">Next post</span>
@@ -230,6 +229,8 @@
          
           <li><a href="/archives/">Archive</a></li>
          
+          <li><a href="/search/">Search</a></li>
+         
           <li><a href="/about/">About</a></li>
         
       </ul>
@@ -285,6 +286,8 @@
          
           <li><a href="/archives/">Archive</a></li>
          
+          <li><a href="/search/">Search</a></li>
+         
           <li><a href="/about/">About</a></li>
         
       </ul>
@@ -295,24 +298,23 @@
     </div>
     <!-- styles -->
 
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/coldercoder/coldercoder.github.io/lib/font-awesome/css/all.min.css">
 
 
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/coldercoder/coldercoder.github.io/lib/justified-gallery/css/justifiedGallery.min.css">
+  <link rel="preload" as="style" href="https://cdnjs.loli.net/ajax/libs/font-awesome/5.15.2/css/all.min.css" crossorigin="anonymous" onload="this.onload=null;this.rel='stylesheet'"/>
 
 
     <!-- jquery -->
+ 
+  <script src="https://cdnjs.loli.net/ajax/libs/jquery/3.6.0/jquery.min.js" crossorigin="anonymous"></script> 
 
-<script src="https://cdn.jsdelivr.net/gh/coldercoder/coldercoder.github.io/lib/jquery/jquery.min.js"></script>
 
 
-<script src="https://cdn.jsdelivr.net/gh/coldercoder/coldercoder.github.io/lib/justified-gallery/js/jquery.justifiedGallery.min.js"></script>
 
 <!-- clipboard -->
 
   
-<script src="https://cdn.jsdelivr.net/gh/coldercoder/coldercoder.github.io/lib/clipboard/clipboard.min.js"></script>
-
+    <script src="https://cdnjs.loli.net/ajax/libs/clipboard.js/2.0.7/clipboard.min.js" crossorigin="anonymous"></script> 
+  
   <script type="text/javascript">
   $(function() {
     // copy-btn HTML
@@ -349,6 +351,8 @@
     </script>
 
 <!-- Baidu Analytics -->
+
+<!-- Cloudflare Analytics -->
 
 <!-- Umami Analytics -->
 

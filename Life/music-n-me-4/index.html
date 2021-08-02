@@ -5,8 +5,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="HandheldFriendly" content="True">
-    <meta name="google-site-verification" content="kLDn9a7ZvPJt3MBwafuCwGPkzsd3SRnOKYyfJlXBAWQ" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
     <meta name="description" content="对华语流行的失望是一回事，对母语的依恋是另一回事。 在我刚开始听歌的一余载，我碰到东亚当代歌星相关的内容，一律退避三舍。但其间我也有幸遇到了许多令我感触良深的歌曲，我往往不比它们年长多少，还有许多歌曲来自千禧之前。 听华语歌，有别样的安心感，就像是找到了家，找到了文化的根。 选一些聊一聊吧。 家国什么是爱国歌曲？是主旋律歌曲吗？我想，空洞的歌颂之中是没有爱的，正如阿谀奉承之徒心中没有忠诚。 记得当">
 <meta property="og:type" content="article">
 <meta property="og:title" content="音乐和我（四）">
@@ -45,21 +44,19 @@
 
     <!-- persian styles -->
     
-      
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/coldercoder/coldercoder.github.io/css/rtl.css">
-
-    
     <!-- rss -->
     
     
+	<!-- mathjax -->
+	
 <meta name="generator" content="Hexo 5.4.0"></head>
 
 <body class="max-width mx-auto px3 ltr">
     
       <div id="header-post">
-  <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
-  <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
-  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <a id="menu-icon" href="#" aria-label="Menu"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#" aria-label="Menu"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" "Top" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
   <span id="menu">
     <span id="nav">
       <ul>
@@ -70,6 +67,8 @@
          
           <li><a href="/archives/">Archive</a></li>
          
+          <li><a href="/search/">Search</a></li>
+         
           <li><a href="/about/">About</a></li>
         
       </ul>
@@ -78,13 +77,13 @@
     <span id="actions">
       <ul>
         
-        <li><a class="icon" href="/Life/not-drunk/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        <li><a class="icon" aria-label="Previous post " href="/Life/not-drunk/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
         
         
-        <li><a class="icon" href="/Life/music-n-me-3/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        <li><a class="icon" aria-label="Next post " href="/Life/music-n-me-3/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
         
-        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
-        <li><a class="icon" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+        <li><a class="icon" aria-label="Back to top " href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" aria-label="Share post " href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
       </ul>
       <span id="i-prev" class="info" style="display:none;">Previous post</span>
       <span id="i-next" class="info" style="display:none;">Next post</span>
@@ -213,6 +212,8 @@
          
           <li><a href="/archives/">Archive</a></li>
          
+          <li><a href="/search/">Search</a></li>
+         
           <li><a href="/about/">About</a></li>
         
       </ul>
@@ -268,6 +269,8 @@
          
           <li><a href="/archives/">Archive</a></li>
          
+          <li><a href="/search/">Search</a></li>
+         
           <li><a href="/about/">About</a></li>
         
       </ul>
@@ -278,24 +281,23 @@
     </div>
     <!-- styles -->
 
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/coldercoder/coldercoder.github.io/lib/font-awesome/css/all.min.css">
 
 
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/coldercoder/coldercoder.github.io/lib/justified-gallery/css/justifiedGallery.min.css">
+  <link rel="preload" as="style" href="https://cdnjs.loli.net/ajax/libs/font-awesome/5.15.2/css/all.min.css" crossorigin="anonymous" onload="this.onload=null;this.rel='stylesheet'"/>
 
 
     <!-- jquery -->
+ 
+  <script src="https://cdnjs.loli.net/ajax/libs/jquery/3.6.0/jquery.min.js" crossorigin="anonymous"></script> 
 
-<script src="https://cdn.jsdelivr.net/gh/coldercoder/coldercoder.github.io/lib/jquery/jquery.min.js"></script>
 
 
-<script src="https://cdn.jsdelivr.net/gh/coldercoder/coldercoder.github.io/lib/justified-gallery/js/jquery.justifiedGallery.min.js"></script>
 
 <!-- clipboard -->
 
   
-<script src="https://cdn.jsdelivr.net/gh/coldercoder/coldercoder.github.io/lib/clipboard/clipboard.min.js"></script>
-
+    <script src="https://cdnjs.loli.net/ajax/libs/clipboard.js/2.0.7/clipboard.min.js" crossorigin="anonymous"></script> 
+  
   <script type="text/javascript">
   $(function() {
     // copy-btn HTML
@@ -332,6 +334,8 @@
     </script>
 
 <!-- Baidu Analytics -->
+
+<!-- Cloudflare Analytics -->
 
 <!-- Umami Analytics -->
 
