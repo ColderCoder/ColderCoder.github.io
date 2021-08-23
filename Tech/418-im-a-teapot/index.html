@@ -14,7 +14,7 @@
 <meta property="og:description" content="配置反代禁止通过IP访问，之前干脆return 403，这次突发奇想能不能返回 418 I’m a teapot，既表示拒绝又不那么冰冷。 418状态码的描述是这样的：  Any attempt to brew coffee with a teapot should result in the error code “418 I’m a teapot”. The resulting entity">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2021-08-23T20:07:39.000Z">
-<meta property="article:modified_time" content="2021-08-23T20:41:37.166Z">
+<meta property="article:modified_time" content="2021-08-23T20:44:57.315Z">
 <meta property="article:author" content="ColderCoder">
 <meta property="article:tag" content="web">
 <meta name="twitter:card" content="summary">
@@ -164,7 +164,7 @@
 <p>当在Nginx返回418状态码时，你只会看到浏览器的报错。nginx中，418并没有像404那样的默认错误页。但我们可以这样配置：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">server &#123;</span><br><span class="line">    listen 80 default_server;</span><br><span class="line">    default_type text&#x2F;plain;</span><br><span class="line">    return 418 &quot;418 I&#39;m a teapot\n&quot;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>这样，浏览器收到418的同时，会显示”418 I’m a teapot”。  </p>
+<p>这样，浏览器收到418的同时，会显示 418 I’m a teapot。  </p>
 <p>不够优雅？可以这样：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">server &#123;</span><br><span class="line">        listen 80 default_server;</span><br><span class="line">        location &#x2F; &#123;</span><br><span class="line">                return 418;</span><br><span class="line">        &#125;</span><br><span class="line">        error_page 418 &#x2F;custom_418.html;</span><br><span class="line">        location &#x3D; &#x2F;custom_418.html &#123;</span><br><span class="line">                root &#x2F;var&#x2F;www&#x2F;html&#x2F;errors;</span><br><span class="line">                internal;</span><br><span class="line">        &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
