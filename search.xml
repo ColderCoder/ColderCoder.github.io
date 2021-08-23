@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>feedback域名敲诈</title>
+      <link href="Tech/feedback-tld/"/>
+      <url>Tech/feedback-tld/</url>
+      
+        <content type="html"><![CDATA[<p>偶尔看到feedback这个gTLD，好奇会有什么样的人专门买一个来用，随即看到评论说这是scam，出于好奇查了查。</p><p>让我们来看看这个域名是怎么运营的：</p><p><code>.feedback</code>的运营公司“免费”为5,000家大公司预注册了域名，并指向了由他们运营的反馈网站。很显然，在这些站点提交的用户反馈并不会被传送到目标公司，商标持有者们可能完全不知道有这样的站点存在，毫无疑问这会让那些被“忽视”的用户失望。（你可以访问<a href="http://www.google.feedback/">google.feedback</a>，至少目前还在运行）<br>那么要如何阻止这样的事情呢？每年花费20$可以使这些反馈被发送至目标公司，每年花费600$才能拥有这个域名真正的控制权。简而言之，为了避免被莫名其妙的<code>.feedback</code>网站败坏声誉，那些公司需要每年支付600$，并且这么做毫无价值。</p><p>类似的域名还有<code>.sucks</code>，私以为这与其说是scam，不如叫robbery. 这些顶级域无疑是争议性的，它带来了新的商业模式，但手段并不光彩。</p><p>参考链接: <a href="https://everythingsysadmin.com/2017/06/the-feedback-scam.html">The .feedback scam</a></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> Tech </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> web </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>呓语 Jul2021</title>
       <link href="Life/thoughts2/"/>
       <url>Life/thoughts2/</url>
