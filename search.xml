@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>418 I&#39;m a teapot</title>
+      <link href="Tech/418-im-a-teapot/"/>
+      <url>Tech/418-im-a-teapot/</url>
+      
+        <content type="html"><![CDATA[<p>配置反代禁止通过IP访问，之前干脆<code>return 403</code>，这次突发奇想能不能返回**<em>418 I’m a teapot**</em>，既表示拒绝又不那么冰冷。</p><p><a href="https://datatracker.ietf.org/doc/html/rfc2324#section-2.3.2">418状态码的描述</a>是这样的：</p><blockquote><p>Any attempt to brew coffee with a teapot should result in the error code “418 I’m a teapot”. The resulting entity body MAY be short and stout.</p></blockquote><p>这份<a href="https://datatracker.ietf.org/doc/html/rfc2324">RFC 2324</a>文件发布于1998年的愚人节，描述了一种称为超文本咖啡壶控制协议 (HTCPCP/1.0) 的标准，该标准用于通过HTTP控制咖啡机。当使用茶壶冲泡咖啡时便会返回这个错误。这个滑稽而“无用”的状态码曾被提议删除，<a href="https://save418.com/">save418</a>运动挽救了它，并声称: “We are the teapots.”</p><p>当在Nginx返回418状态码时，你只会看到浏览器的报错。nginx中，418并没有像404那样的默认错误页。但我们可以这样配置：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">server &#123;</span><br><span class="line">    listen 80 default_server;</span><br><span class="line">    default_type text&#x2F;plain;</span><br><span class="line">    return 418 &quot;418 I&#39;m a teapot\n&quot;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>这样，浏览器收到418的同时，会显示”418 I’m a teapot”。  </p><p>不够优雅？可以这样：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">server &#123;</span><br><span class="line">        listen 80 default_server;</span><br><span class="line">        location &#x2F; &#123;</span><br><span class="line">                return 418;</span><br><span class="line">        &#125;</span><br><span class="line">        error_page 418 &#x2F;custom_418.html;</span><br><span class="line">        location &#x3D; &#x2F;custom_418.html &#123;</span><br><span class="line">                root &#x2F;var&#x2F;www&#x2F;html&#x2F;errors;</span><br><span class="line">                internal;</span><br><span class="line">        &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>对应的html差不多是这样写:</p><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span><span class="tag">&lt;<span class="name">title</span>&gt;</span>418 I&#x27;m a teapot<span class="tag">&lt;/<span class="name">title</span>&gt;</span><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span> <span class="attr">bgcolor</span>=<span class="string">&quot;white&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">center</span>&gt;</span><span class="tag">&lt;<span class="name">h1</span>&gt;</span>418 I&#x27;m a teapot<span class="tag">&lt;/<span class="name">h1</span>&gt;</span><span class="tag">&lt;/<span class="name">center</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">hr</span>&gt;</span><span class="tag">&lt;<span class="name">center</span>&gt;</span>don&#x27;t brew coffee with a teapot<span class="tag">&lt;/<span class="name">center</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure><p>让我们像笨蛋一样为这滑稽的举措开怀大笑吧，我们是茶壶！</p><p>:-)</p><p>参考链接: <a href="https://grumpytechie.net/2019/09/05/implementing-http-418-errors-on-nginx-nginx-tricks-part-2/">Implementing HTTP 418 Errors on NGINX</a></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> Tech </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> web </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>feedback域名敲诈</title>
       <link href="Tech/feedback-tld/"/>
       <url>Tech/feedback-tld/</url>
